@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const db = require("./db");
 const methodOverride = require("method-override");
 const itemRoutes = require("./routes/items");
 require("dotenv").config();
