@@ -1,0 +1,33 @@
+<%- include("../partials/header") %>
+
+<h2>Edit Item</h2>
+
+<form action="/items/<%= item.id %>?_method=PUT" method="POST">
+  <label>Name:</label>
+  <input type="text" name="name" value="<%= item.name %>" required><br>
+
+  <label>Price (€):</label>
+  <input type="number" step="0.01" name="price" value="<%= item.price %>" required><br>
+
+  <label>Category:</label>
+  <select name="category_id" required>
+    <% categories.forEach(category => { %>
+      <option value="<%= category.id %>" <%= category.id === item.category_id ? "selected" : "" %>>
+        <%= category.name %>
+      </option>
+    <% }) %>
+  </select><br>
+
+  <label>Quantity in Stock:</label>
+  <input type="number" name="quantity_in_stock" min="0" value="<%= item.quantity_in_stock %>" required><br>
+
+  <label>On Sale:</label>
+  <input type="checkbox" name="on_sale" <%= item.on_sale ? "checked" : "" %>><br>
+
+  <label>Description:</label><br>
+  <textarea name="description" rows="4" cols="40"><%= item.description %></textarea><br>
+
+  <button type="submit">Update Item</button>
+</form>
+
+<%- include("../partials/footer") %>
