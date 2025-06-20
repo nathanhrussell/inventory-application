@@ -2,5 +2,15 @@
     <footer>
         <p>© <%= new Date().getFullYear() %> Tech Inventory</p>
     </footer>
+    <script>
+  document.querySelectorAll(".show-toggle").forEach(button => {
+    button.addEventListener("click", () => {
+      const input = button.previousElementSibling;
+      const isPassword = input.getAttribute("type") === "password";
+      input.setAttribute("type", isPassword ? "text" : "password");
+      button.textContent = isPassword ? "🙈" : "👁️";
+    });
+  });
+</script>
 </body>
 </html>

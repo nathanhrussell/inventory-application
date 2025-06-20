@@ -30,7 +30,9 @@
   <form action="/items/<%= item.id %>?_method=PUT" method="POST">
 
   <label>Master Password:</label>
-  <input type="password" name="masterPassword" required><br>
+  <input type="password" name="masterPassword" class="toggle-password" required>
+  <button type="button" class="show-toggle">👁️</button>
+  <br>
 
   <button type="submit">Update Item</button>
 </form>

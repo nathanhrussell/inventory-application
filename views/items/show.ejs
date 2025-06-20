@@ -10,10 +10,11 @@
 <p><strong>Description:</strong> <%= item.description || "No description." %></p>
 
 <a href="/items/<%= item.id %>/edit">Edit</a> |
-<form action="/items/<%= item.id %>?_method=DELETE" method="POST" style="margin-top: 1rem;">
+<form action="/items/<%= item.id %>?_method=DELETE" method="POST" style="margin-top: 1rem; display: inline-block;">
   <label>Master Password:</label>
-  <input type="password" name="masterPassword" required>
-  <button type="submit">Delete</button>
+  <input type="password" name="masterPassword" class="toggle-password" required>
+  <button type="button" class="show-toggle">👁️</button>
+  <button type="submit">Delete</button> <!-- ✅ This is the missing line -->
 </form>
 
 <%- include("../partials/footer") %>
