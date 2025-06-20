@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const db = require("../db");
 const itemController = require("../controllers/itemController");
 
 router.get("/", itemController.listItems);
 
 router.get("/new", async (req, res) => {
-    const result = await db.query("SELECT * FROM categories ORDER BY name ASC");
-    res.render("items/new", { categories: result. rows});
+  const result = await db.query("SELECT * FROM categories ORDER BY name ASC");
+  res.render("items/new", { categories: result.rows });
 });
 
 router.post("/", itemController.createItem);
