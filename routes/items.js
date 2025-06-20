@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db");
 const itemController = require("../controllers/itemController");
+const checkMasterPassword = require("../middleware/checkPassword");
 
 router.get("/", itemController.listItems);
 
@@ -10,7 +11,7 @@ router.get("/new", async (req, res) => {
   res.render("items/new", { categories: result.rows });
 });
 
-router.post("/", itemController.createItem);
+router.post("/", checkMasterPassword, itemController.createItem);
 
 router.get("/:id", itemController.getItem);
 
@@ -27,8 +28,8 @@ router.get("/:id/edit", async (req, res) => {
     });
 });
 
-router.put("/:id", itemController.updateItem);
+router.put("/:id", checkMasterPassword, itemController.updateItem);
 
-router.delete("/:id", itemController.deleteItem);
+router.delete("/:id", checkMasterPassword, itemController.deleteItem);
 
 module.exports = router;
