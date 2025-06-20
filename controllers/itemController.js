@@ -54,6 +54,12 @@ const updateItem = async (req, res) => {
 
 const deleteItem = async (req, res) => {
     const { id } = req.params;
+    const { masterPassword } = req.body;
+
+    if (masterPassword !== process.env.MASTER_PASSWORD) {
+        return res.status(403).send("Forbidden: incorrect master password.");
+    }
+    
     try {
         await db.query("DELETE FROM items WHERE id = $1", [id]);
         res.redirect("/items");

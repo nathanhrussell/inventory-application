@@ -10,7 +10,9 @@
 <p><strong>Description:</strong> <%= item.description || "No description." %></p>
 
 <a href="/items/<%= item.id %>/edit">Edit</a> |
-<form action="/items/<%= item.id %>?_method=DELETE" method="POST" style="display:inline;">
+<form action="/items/<%= item.id %>?_method=DELETE" method="POST" style="margin-top: 1rem;">
+  <label>Master Password:</label>
+  <input type="password" name="masterPassword" required>
   <button type="submit">Delete</button>
 </form>
 
