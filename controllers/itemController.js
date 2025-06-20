@@ -55,7 +55,7 @@ const updateItem = async (req, res) => {
 const deleteItem = async (req, res) => {
     const { id } = req.params;
     try {
-        await.db.query("DELETE FROM items WHERE id = $1", [id]);
+        await db.query("DELETE FROM items WHERE id = $1", [id]);
         res.redirect("/items");
     } catch (err) {
         console.error("Error deleting item:", err);
