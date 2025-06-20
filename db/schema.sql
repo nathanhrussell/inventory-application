@@ -8,11 +8,11 @@ CREATE TABLE categories (
 
 CREATE TABLE items (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL;
+    name VARCHAR(255) NOT NULL,
     category_id INTEGER REFERENCES categories(id) ON DELETE SET NULL,
     price NUMERIC(10, 2) NOT NULL,
     on_sale BOOLEAN DEFAULT false,
     quantity_in_stock INTEGER NOT NULL DEFAULT 0,
     description TEXT,
-    created at TIMESTAMP DEFAULT NOW()
+    created_at TIMESTAMP DEFAULT NOW()
 );
