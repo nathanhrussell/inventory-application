@@ -1,0 +1,17 @@
+<%- include("../partials/header") %>
+
+<h2><%= item.name %></h2>
+
+<p><strong>Price:</strong> €<%= item.price.toFixed(2) %></p>
+<p><strong>Stock:</strong> <%= item.quantity_in_stock %></p>
+<% if (item.on_sale) { %>
+  <p style="color: red;"><strong>This item is on sale!</strong></p>
+<% } %>
+<p><strong>Description:</strong> <%= item.description || "No description." %></p>
+
+<a href="/items/<%= item.id %>/edit">Edit</a> |
+<form action="/items/<%= item.id %>?_method=DELETE" method="POST" style="display:inline;">
+  <button type="submit">Delete</button>
+</form>
+
+<%- include("../partials/footer") %>

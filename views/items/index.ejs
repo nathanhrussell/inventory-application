@@ -1,6 +1,22 @@
 <%- include("../partials/header") %>
 
-<h1>Inventory List</h1>
-<p>No items yet!</p>
+<h2>All Items</h2>
+
+<% if (items.length === 0) { %>
+  <p>No items available.</p>
+<% } else { %>
+  <ul>
+    <% items.forEach(item => { %>
+      <li>
+        <a href="/items/<%= item.id %>"><strong><%= item.name %></strong></a><br>
+        €<%= item.price.toFixed(2) %> – 
+        <%= item.quantity_in_stock %> in stock
+        <% if (item.on_sale) { %>
+          <span style="color: red;">(On Sale!)</span>
+        <% } %>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>
 
 <%- include("../partials/footer") %>
