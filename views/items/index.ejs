@@ -9,7 +9,7 @@
     <% items.forEach(item => { %>
       <li>
         <a href="/items/<%= item.id %>"><strong><%= item.name %></strong></a><br>
-        €<%= item.price.toFixed(2) %> – 
+        €<%= Number(item.price).toFixed(2) %>
         <%= item.quantity_in_stock %> in stock
         <% if (item.on_sale) { %>
           <span style="color: red;">(On Sale!)</span>
